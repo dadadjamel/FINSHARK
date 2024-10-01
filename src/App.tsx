@@ -11,29 +11,30 @@ function App() {
   const [searchReasult, setSearchReasult] = useState<CompanySearch[]>([])
   const [serverError, setServerError] = useState<string>('')
 
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-      setSearch(e.target.value)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
   }
 
   // here
-  const handleClick = async (e : React.MouseEvent<HTMLButtonElement>) => {
-      const result = await searchCompanies(search)
-      if (typeof result === 'string') {
-        setServerError(result)
-      }else if ( Array.isArray(result.data)){
-        setSearchReasult(result.data)
-      }
-      console.log(searchReasult);
-      
-      
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const result = await searchCompanies(search)
+    if (typeof result === 'string') {
+      setServerError(result)
+    } else if (Array.isArray(result.data)) {
+      setSearchReasult(result.data)
+    }
+    console.log(searchReasult);
+
+
   }
 
 
   return (
     <div className='App'>
       <Search handleChange={handleChange} search={search} handleClick={handleClick} />
-      { serverError && <h1> {serverError} </h1> }
-      <CardList/>
+      {serverError && <h1> {serverError} </h1>}
+      <CardList />
     </div>
   )
 }
