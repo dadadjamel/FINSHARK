@@ -28,7 +28,7 @@ function App() {
 
 
   }
-  // add 1 + 1
+  // added 2+2
 
   return (
     <div className='App'>
