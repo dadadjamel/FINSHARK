@@ -12,7 +12,7 @@ const Search = ({handleClick,search,handleChange} : props) => {
     return (
         <div>
             <input value={search} onChange={(e)=>handleChange(e)} />
-            <button onClick={e => handleClick(e)}> Click me </button>
+            <button onClick={e => handleClick(e)}> Search </button>
         </div>
     )
 }
